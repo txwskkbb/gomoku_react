@@ -1,0 +1,41 @@
+body {
+  background-color: #f0f0f0;
+  font-family: sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.game-info {
+  text-align: center;
+}
+
+#msg {
+  font-size: 24px;
+  font-weight: bold;
+  height: 30px; /* Reserve space to prevent layout shift */
+}
+
+#restart {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  background-color: #4CAF50;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#restart:hover {
+  background-color: #45a049;
+}

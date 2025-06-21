@@ -1,0 +1,59 @@
+.board {
+  display: grid;
+  /* Use CSS variables to make it easy to change board size */
+  --board-size: 15;
+  --cell-size: 40px;
+  grid-template-columns: repeat(var(--board-size), var(--cell-size));
+  grid-template-rows: repeat(var(--board-size), var(--cell-size));
+  width: calc(var(--board-size) * var(--cell-size));
+  height: calc(var(--board-size) * var(--cell-size));
+  background-color: burlywood;
+  border: 2px solid #8B4513;
+  position: relative;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Grid lines using pseudo-elements on the board container */
+.board::before {
+  content: '';
+  position: absolute;
+  top: calc(var(--cell-size) / 2);
+  left: calc(var(--cell-size) / 2);
+  right: calc(var(--cell-size) / 2);
+  bottom: calc(var(--cell-size) / 2);
+  background-image:
+    linear-gradient(to right, #61380B 1px, transparent 1px),
+    linear-gradient(to bottom, #61380B 1px, transparent 1px);
+  background-size: var(--cell-size) var(--cell-size);
+  pointer-events: none; /* Allows clicks to pass through to cells */
+}
+
+.cell {
+  width: var(--cell-size);
+  height: var(--cell-size);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  position: relative; /* For z-index to work */
+  z-index: 1;
+}
+
+.cell.disabled {
+    cursor: not-allowed;
+}
+
+.stone {
+  width: 80%;
+  height: 80%;
+  border-radius: 50%;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.stone.player {
+  background: radial-gradient(circle at 30% 30%, #444, #000);
+}
+
+.stone.ai {
+  background: radial-gradient(circle at 30% 30%, #fff, #ccc);
+}
